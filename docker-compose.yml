@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    php:
+        build:
+            context: ./docker/php
+        volumes:
+            - "./:/app/:z"
+
+    postgres:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_DB: test
+            PGDATA: "/dev/shm/data"
